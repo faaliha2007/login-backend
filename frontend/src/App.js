@@ -20,6 +20,9 @@ function App() {
   const navigate = useNavigate();
   const timeRef = useRef(null)
 
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
+
   function handleUser(evt) {
     setUser(evt.target.value);
   }
@@ -41,7 +44,7 @@ function App() {
 
     setTimeout(async () => {
       try {
-        const response = await axios.post("http://localhost:7000/login", {
+        const response = await axios.post(`${BASE_URL}/login`, {
           username: user.trim(),
           password: pass.trim(),
         });
